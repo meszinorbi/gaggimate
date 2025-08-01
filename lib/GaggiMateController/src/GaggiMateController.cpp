@@ -126,12 +126,13 @@ void GaggiMateController::loop() {
 void GaggiMateController::registerBoardConfig(ControllerConfig config) { configs.push_back(config); }
 
 void GaggiMateController::detectBoard() {
-    pinMode(DETECT_EN_PIN, OUTPUT);
-    pinMode(DETECT_VALUE_PIN, INPUT_PULLDOWN);
-    digitalWrite(DETECT_EN_PIN, HIGH);
-    uint16_t millivolts = analogReadMilliVolts(DETECT_VALUE_PIN);
-    digitalWrite(DETECT_EN_PIN, LOW);
-    int boardId = round(((float)millivolts) / 100.0f - 0.5f);
+    // pinMode(DETECT_EN_PIN, OUTPUT);
+    // pinMode(DETECT_VALUE_PIN, INPUT_PULLDOWN);
+    // digitalWrite(DETECT_EN_PIN, HIGH);
+    // uint16_t millivolts = analogReadMilliVolts(DETECT_VALUE_PIN);
+    // digitalWrite(DETECT_EN_PIN, LOW);
+    // int boardId = round(((float)millivolts) / 100.0f - 0.5f);
+    int boardId = 3;
     ESP_LOGI(LOG_TAG, "Detected Board ID: %d", boardId);
     for (ControllerConfig config : configs) {
         if (config.autodetectValue == boardId) {
